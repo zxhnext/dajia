@@ -404,9 +404,9 @@
 			$('.result-options').data('correct', data['daoju'][daoju][answerIndex]['correct']);
 			$('.answer').data('daoju', daoju);
 		}
-		function success(daoju,$t){
+		function success(daoju,$t,animationDom){
 			$('.'+daoju).addClass('current');
-			$t.find('.animation-correct').velocity('fadeIn',{complete:
+			$t.find(animationDom).velocity('fadeIn',{complete:
 				function(){
 					lock = false;
 					var $t = $(this);
@@ -478,7 +478,7 @@
 			if (isfinished) {
 				if (daoju != 'renwu') {
 					if (result>=2) {
-						success(daoju,$t);
+						success(daoju,$t,'.animation-correct');
 					}else{
 						faild($t,'.animation-correct');
 					}
@@ -499,7 +499,7 @@
 					if (result<2) {
 						faild($t,'.animation-wrong');
 					}else{
-						success(daoju,$t);
+						success(daoju,$t,'.animation-wrong');
 					}
 				}else{
 					renwuresult($t,'.animation-wrong');
